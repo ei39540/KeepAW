@@ -86,6 +86,9 @@ public class MouseMover  {
                     	printCMDs();
                     	delayThread();
                     }
+                    else if(line.startsWith("stop in")) {
+                    	StopIn(line.substring(7).trim());
+                    }
                     else
                     	System.out.printf("command not recognized!");
                     	
@@ -231,6 +234,36 @@ public class MouseMover  {
 	                clrscr();
 	                System.out.println(getDate());
 	                System.out.println("cmd:");
+					
+        	//	}
+            }
+        };
+        Thread thread = new Thread(myRunnable);
+    	thread.start();
+    }
+    private void StopIn(String min)
+    {
+    	System.out.println("Stopping "+min+" minutes from "+getDate() );
+    	int i=Integer.parseInt(min)*60000;
+    	Runnable myRunnable = new Runnable()
+        {
+        	public void run(){
+        		//while(true) {
+        			System.out.println("cmd:");
+                    
+                    	
+        			
+	                //System.out.println("Runnable running");
+	                try {
+						Thread.sleep(i);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	                System.out.println("Stopping at: "+getDate() );
+	                System.exit(0);
+//	                System.out.println(getDate());
+//	                System.out.println("cmd:");
 					
         	//	}
             }
