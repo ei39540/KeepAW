@@ -13,7 +13,7 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Scanner;
 
-public class MouseMover  {
+public class KeepAW  {
 
     public int TIME_INT = 30001;
     public int MAX_Y = 40;
@@ -25,19 +25,19 @@ public class MouseMover  {
     Properties prop;
     
  // static variable single_instance of type Singleton 
-    private static MouseMover single_instance = null; 
+    private static KeepAW single_instance = null; 
     
     
-    public static MouseMover getInstance() 
+    public static KeepAW getInstance() 
     { 
         if (single_instance == null) 
-            single_instance = new MouseMover(); 
+            single_instance = new KeepAW(); 
   
         return single_instance; 
     } 
     
     public static void main(String... args) {
-    	MouseMover tmp=getInstance();
+    	KeepAW tmp=getInstance();
     	
     	System.out.println(tmp.getDate());
     	tmp.delayThread();
@@ -172,6 +172,13 @@ public class MouseMover  {
 				DIST=Integer.parseInt(prop.getProperty("DIST"));
 				System.out.println("DIST: "+DIST+"px");
 			}
+			if(prop.getProperty("printInfo")!=null) {
+				if(prop.getProperty("printInfo").equalsIgnoreCase("true"))
+					printInfo=true;
+				else
+					printInfo=false;
+				System.out.println("printInfo: "+printInfo);
+			}
 				
 		//	System.out.println(prop.getProperty("SERVER_PORT"));
 		//	System.out.println(prop.getProperty("CLIENT_NAME"));
@@ -278,7 +285,7 @@ public class MouseMover  {
 		String op_sys = System.getProperty("os.name");
 		System.out.println("OS:"+op_sys);
 		try {
-			Runtime.getRuntime().exec("Rundll32.exe user32.dll,LockWorkStation"); //Ilåser datorn
+			Runtime.getRuntime().exec("Rundll32.exe user32.dll,LockWorkStation"); //Ilï¿½ser datorn
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
